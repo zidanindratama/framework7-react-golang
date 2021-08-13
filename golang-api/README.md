@@ -1,6 +1,6 @@
-# Go and PostgreSQL
+# Go, Gin, Gorm, and MySQL
 
-a simple crud with go and postgre
+a simple crud with go and mysql
 
 ## Routes
 
