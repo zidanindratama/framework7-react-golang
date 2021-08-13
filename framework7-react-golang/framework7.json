@@ -1,0 +1,19 @@
+{
+  "cwd": "E:\\reactjs freecodecamp\\js moonlay\\framework7-react-starter-single",
+  "type": [
+    "web"
+  ],
+  "name": "Starter App ",
+  "framework": "react",
+  "template": "single-view",
+  "bundler": "vite",
+  "cssPreProcessor": false,
+  "theming": {
+    "customColor": false,
+    "color": "#007aff",
+    "darkTheme": false,
+    "iconFonts": true,
+    "fillBars": false
+  },
+  "customBuild": false
+}

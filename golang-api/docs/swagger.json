@@ -1,0 +1,192 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "API Mahasiswa Golang",
+        "title": "Mahasiswa API",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "API Support",
+            "url": "http://www.swagger.io/support",
+            "email": "support@swagger.io"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/",
+    "paths": {
+        "/mahasiswa": {
+            "get": {
+                "description": "get string by NIM",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Mahasiswa"
+                ],
+                "summary": "Daftar mahasiswa",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Contact Name search",
+                        "name": "q",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Mahasiswa"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "tambah mahasiswa baru, jika ada input yang salah print error",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Mahasiswa"
+                ],
+                "summary": "Tambah mahasiswa",
+                "parameters": [
+                    {
+                        "description": "Mahasiswa body",
+                        "name": "contact",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Mahasiswa"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Mahasiswa"
+                        }
+                    }
+                }
+            }
+        },
+        "/mahasiswa/{id}": {
+            "put": {
+                "description": "Cari data mahasiswa dari Nim, lalu update data tersebut",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Mahasiswa"
+                ],
+                "summary": "Ubah data mahasiswa sesuai Nim",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Mahasiswa Nim",
+                        "name": "nim",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Mahasiswa body",
+                        "name": "mahasiswa",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Mahasiswa"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Mahasiswa"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Cari data mahasiswa dari Nim, lalu hapus data tersebut",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Mahasiswa"
+                ],
+                "summary": "Hapus data mahasiswa",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Mahasiswa Nim",
+                        "name": "nim",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Mahasiswa"
+                        }
+                    }
+                }
+            }
+        },
+        "/mahasiswa/{nim}": {
+            "get": {
+                "description": "Cari mahasiswa dari NIM",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Mahasiswa"
+                ],
+                "summary": "Detail mahasiswa",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Mahasiswa Nim",
+                        "name": "nim",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Mahasiswa"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "models.Mahasiswa": {
+            "type": "object",
+            "properties": {
+                "nama": {
+                    "type": "string"
+                },
+                "nim": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}

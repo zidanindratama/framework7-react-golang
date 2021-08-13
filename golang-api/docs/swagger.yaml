@@ -1,0 +1,127 @@
+basePath: /
+definitions:
+  models.Mahasiswa:
+    properties:
+      nama:
+        type: string
+      nim:
+        type: integer
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: API Mahasiswa Golang
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Mahasiswa API
+  version: "1.0"
+paths:
+  /mahasiswa:
+    get:
+      description: get string by NIM
+      parameters:
+      - description: Contact Name search
+        in: query
+        name: q
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Mahasiswa'
+      summary: Daftar mahasiswa
+      tags:
+      - Mahasiswa
+    post:
+      consumes:
+      - application/json
+      description: tambah mahasiswa baru, jika ada input yang salah print error
+      parameters:
+      - description: Mahasiswa body
+        in: body
+        name: contact
+        required: true
+        schema:
+          $ref: '#/definitions/models.Mahasiswa'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Mahasiswa'
+      summary: Tambah mahasiswa
+      tags:
+      - Mahasiswa
+  /mahasiswa/{id}:
+    delete:
+      description: Cari data mahasiswa dari Nim, lalu hapus data tersebut
+      parameters:
+      - description: Mahasiswa Nim
+        in: path
+        name: nim
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Mahasiswa'
+      summary: Hapus data mahasiswa
+      tags:
+      - Mahasiswa
+    put:
+      consumes:
+      - application/json
+      description: Cari data mahasiswa dari Nim, lalu update data tersebut
+      parameters:
+      - description: Mahasiswa Nim
+        in: path
+        name: nim
+        required: true
+        type: integer
+      - description: Mahasiswa body
+        in: body
+        name: mahasiswa
+        required: true
+        schema:
+          $ref: '#/definitions/models.Mahasiswa'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Mahasiswa'
+      summary: Ubah data mahasiswa sesuai Nim
+      tags:
+      - Mahasiswa
+  /mahasiswa/{nim}:
+    get:
+      description: Cari mahasiswa dari NIM
+      parameters:
+      - description: Mahasiswa Nim
+        in: path
+        name: nim
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Mahasiswa'
+      summary: Detail mahasiswa
+      tags:
+      - Mahasiswa
+swagger: "2.0"
